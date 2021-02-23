@@ -19,4 +19,4 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Compile with Maven
-        run: mvn clean package -Dquarkus.container-image.build=true -Dquarkus.container-image.group=viplab -Dquarkus.container-image.name=dummy-backend -Dquarkus.container-image.tag=latest -Dquarkus.container-image.push=true -Dquarkus.container-image.username=${{ secrets.DOCKER_USERNAME }} -Dquarkus.container-image${{ secrets.DOCKER_PASSWORD }} -DskipTests=true
+        run: mvn --no-transfer-progress clean package -Dquarkus.container-image.build=true -Dquarkus.container-image.group=viplab -Dquarkus.container-image.name=dummy-backend -Dquarkus.container-image.tag=latest -Dquarkus.container-image.push=true -Dquarkus.container-image.username=${{ secrets.DOCKER_USERNAME }} -Dquarkus.container-image${{ secrets.DOCKER_PASSWORD }} -DskipTests=true
