@@ -9,79 +9,20 @@
       "stdout" : "",
       "stderr" : ""
     },
-  "artifacts" : [ 
-    {
-      "type": "notifications", 
-      "identifier" : "1dd479d9-c9bd-4711-aed8-5bfb3ec5fcfa",
-      "summary" : "(C chain)v1.9 failed.",
-      "elements" : [
-        {
-          "severity" : "info",
-          "type" : "compiler",
-          "message" : "source_0.c: In function \u2018trapez\u2019:",
-          "output" : {
-            "source" : "stderr",
-            "extract" : "source_0.c: In function \u2018trapez\u2019:",
-            "begin" : 0,
-            "end" : 37
-          }
-        },
-        {
-          "severity" : "warning",
-          "type" : "compiler",
-          "message" : "source_0.c:21:10: warning: unused variable \u2018x\u2019 [-Wunused-variable]",
-          "origin" : {
-              "source" : "parts://7a1808d0-c997-4e28-acdf-bfda3ce70960", 
-              "extract" : "  double x = 0;",
-              "begin" : 406,
-              "end" : 421,
-              "line" : 15,
-              "col" : 10
-          },
-          "output" : {
-              "source" : "stderr",
-              "extract" : "source_0.c:21:10: warning: unused variable \u2018x\u2019 [-Wunused-variable]",
-              "begin" : 38,
-              "end" : 108
-          }
-        },
-        {
-          "severity" : "error",
-          "type" : "callcheck",
-          "message" : "[C function filtering] Function call not allowed:\n\"system\"; original source: codeFromStudent, line (corrected): 20, col: 3\nForbidden calls:\nsystem.\n",
-          "origin" : {
-              "elementID" : "parts://7a1808d0-c997-4e28-acdf-bfda3ce70960",
-              "extract" : "  system(\"/bin/rm /tmp/foo.txt\"); // illegal call (should be catched by checker)",
-              "begin" : 325,
-              "end" : 405,
-              "line" : 14,
-              "col" : 3
-          }
-        }
-      ]
-    },
+  "artifacts" : [
     {
       "type" : "file",
       "identifier" : "de762095-6cd2-439f-80eb-313e85d33869",
-      "MIMEtype": "image/png",
-      "path" : "/images/img.png",
-      "content": "" 
+      "MIMEtype": "text/plain",
+      "path" : "/output/text1.txt",
+      "content": "c29tZSBjb250ZW50"
     },
     {
       "type" : "file",
       "identifier" : "10516761-d937-4ba4-a82f-dc2847d45032",
-      "MIMEtype": "image/png",
-      "path" : "/images/img2.png",
-      "content": "" 
-    },
-    {
-      "type" : "s3file",
-      "identifier" : "cc3c1cf9-c02d-4694-902c-93c298d68c51",
-      "MIMEtype": "application/gzip",
-      "path" : "/largefile/result.tar.gz",
-      "url": "https://s3.temporary.file.url/result.tar.gz",
-      "size" : 123456789,
-      "hash" : "sha512:hashcode_of_file"
+      "MIMEtype": "text/plain",
+      "path" : "/output/text2.txt",
+      "content": "c29tZSBvdGhlciBjb250ZW50"
     }
   ]
 }

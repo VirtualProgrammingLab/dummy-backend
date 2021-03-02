@@ -2,6 +2,9 @@ package de.uni_stuttgart.tik.viplab.dummybackend;
 
 import java.io.InputStream;
 import java.io.StringReader;
+import java.text.SimpleDateFormat;
+import java.util.Base64;
+import java.util.Date;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -40,15 +43,26 @@ public class MessageResponder {
       is = getClass().getClassLoader()
               .getResourceAsStream("results/example1.json");
     } else {
-      //TODO: setup resources
+      // TODO: setup resources
     }
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+    String errMessage = "some random stderr at: " + formatter.format(new Date(System.currentTimeMillis()));
+    String outMessage = "some random stdout at: " + formatter.format(new Date(System.currentTimeMillis()));
+
     jsonReader = Json.createReader(is);
     JsonObject result = jsonReader.readObject();
     result = Json.createPatchBuilder()
             .replace("/computation",
                     Json.createValue(computationID))
+            .replace("/output/stderr",
+                    Json.createValue(Base64.getUrlEncoder()
+                            .encodeToString(errMessage.getBytes())))
+            .replace("/output/stdout",
+                    Json.createValue(Base64.getUrlEncoder()
+                            .encodeToString(outMessage.getBytes())))
             .build()
             .apply(result);
+
     logger.info(result);
     return result.toString();
   }
